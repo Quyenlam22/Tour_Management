@@ -6,3 +6,7 @@ html(lang="en")
         title #{pageTitle}
     body 
         h1 #{pageTitle}
+
+        ul 
+            each item in tours 
+                li #{item.title}
