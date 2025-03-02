@@ -1,5 +1,5 @@
-import express, { Express, Request, Response } from "express";
-import sequelize from "./config/database";
+import express, { Express } from "express";
+// import sequelize from "./config/database";
 import dotenv from "dotenv";
 import clientRoutes from "./routes/client/index.route";
 
@@ -17,7 +17,7 @@ app.set("view engine", "pug");
 // Folder Public
 app.use(express.static(`${__dirname}/public`));
 
-sequelize;
+// sequelize;
 
 clientRoutes(app);
 

@@ -1,9 +1,8 @@
-import { Request, Response } from "express";
 import {Router} from "express";
 const router: Router = Router();
 
-router.get("/", (req: Request, res: Response) => {
-    res.send(`Trang chủ`);
-});
+import * as controller from "../../controllers/client/home.controller";
+
+router.get("/", controller.index);
 
 export const homeRoutes: Router = router;
