@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from "express";
+import sequelize from "./config/database";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,7 +14,9 @@ app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 // Folder Public
-app.use(express.static(`${__dirname}/public`))
+app.use(express.static(`${__dirname}/public`));
+
+sequelize;
 
 app.get("/", (req: Request, res: Response) => {
     res.send(`Trang chủ`);
