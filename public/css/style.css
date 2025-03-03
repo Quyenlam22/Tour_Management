@@ -64,3 +64,129 @@ body {
 .toolbar:hover {
     color: orangered;
 }
+
+/* .tour-detail */
+.tour-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tour-detail .container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.tour-detail .inner-images img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.tour-detail .inner-title{
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.tour-detail .inner-price-special {
+    color: #d32f2f;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.tour-detail .inner-price {
+    color: #757575;
+    font-size: 20px;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+
+
+.tour-detail.inner-percent{
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #d32f2f;
+    padding: 5px 8px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* .tour-detail.inner-percent span{
+    color: #fff;
+    background: red;
+    font-weight: 600;
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 8px;
+} */
+
+.tour-detail .inner-barcode,
+.tour-detail .inner-time-start,
+.tour-detail .inner-stock {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* .tour-detail.inner-stock span{
+    color: #fff;
+    background: green;
+    font-weight: 600;
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 8px;
+} */
+
+.tour-detail form {
+    margin-top: 15px;
+}
+
+.tour-detail form input {
+    width: 100%;
+    text-align: center;
+}
+
+.tour-detail form button {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.tour-detail form button:hover {
+    background-color: #218838;
+}
+
+.tour-detail .inner-information {
+    margin-top: 30px;
+    border: 1px solid #b5b5b5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.tour-detail .inner-information .inner-label {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #c12026;
+    border-bottom: 1px solid #b5b5b5;
+    padding-bottom: 10px;
+}
+
+.tour-detail .inner-information .inner-text {
+    white-space: pre-line;
+}
+
+.tour-detail .inner-information .inner-text img {
+    max-width: 100%;
+    height: auto;
+}

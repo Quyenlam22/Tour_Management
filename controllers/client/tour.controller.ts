@@ -55,10 +55,32 @@ export const index = async (req: Request, res: Response) => {
         item["price_special"] = parseFloat(item["price_special"]);
     });
 
-    console.log(tours)
-
     res.render("client/pages/tours/index", {
         pageTitle: 'Danh sách tour',
         tours: tours
+    });
+}
+
+//[GET] /detail/:slugTour
+export const detail = async (req: Request, res: Response) => {
+    const slugTour = req.params.slugTour;
+
+    const tour = await Tour.findOne({
+        where: {
+            slug: slugTour,
+            deleted: false,
+            status: "active"
+        },
+        raw: true
+    });
+
+    if(tour["images"]){
+        tour["images"] = JSON.parse(tour["images"]);
+    }
+    tour["price_special"] = tour["price"] * (1 - tour["discount"]/100);
+
+    res.render("client/pages/tours/detail", {
+        pageTitle: 'Chi tiết tour',
+        tour: tour
     });
 }

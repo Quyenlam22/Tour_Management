@@ -1,0 +1,60 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/moment.pug
+
+block main 
+    .tour-detail
+        .container.my-3 
+            .row 
+                .col-6
+                    .inner-images 
+                        if(tour.images)
+                            each item in tour.images 
+                                .inner-image 
+                                    img(src=item)
+
+                .col-6 
+                    .inner-title #{tour.title} 
+                    .inner-barcode 
+                        <i class="fa-solid fa-barcode"></i> Mã tour: #{tour.code}
+                    .inner-time-start 
+                        <i class="fa-solid fa-calendar-days"></i> Lịch khởi hành:
+                            +formatDateTime(tour.timeStart)
+                    .inner-stock
+                        <i class="fa-solid fa-person-walking-luggage"></i> Còn lại: #{tour.stock} chỗ
+                    .inner-price-special #{tour.price_special.toLocaleString()}đ
+                    .inner-price #{tour.price.toLocaleString()}đ
+                    .inner-percent Giảm tới #{tour.discount}%
+
+                    form(
+                        form-add-to-card
+                        tour-id=tour.id 
+                    ) 
+                        input(
+                            type="number"
+                            class="form-control mb-2"
+                            name="quantity"
+                            value="1"
+                            min="1"
+                            max=tour.stock
+                        )
+                        button(
+                            type="submit"
+                            class="btn btn-success btn-block"
+                        ) Thêm vào giỏ hàng 
+
+            hr
+
+            .row 
+                .col-12 
+                    .inner-information
+                        .inner-label Thông tin tour
+                        .inner-text     
+                            | !{tour.information}
+
+                .col-12 
+                    .inner-information
+                        .inner-label Lịch trình tour
+                        .inner-text     
+                            | !{tour.schedule}
+                            
