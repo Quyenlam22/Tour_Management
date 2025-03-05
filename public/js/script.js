@@ -32,6 +32,19 @@ const alertAddCartSuccess = () => {
   }
 }
 
+// Mini Cart 
+const showMiniCart = () => {
+  const miniCart = document.querySelector("[mini-cart]");
+  if(miniCart) {
+    const cartStr = JSON.parse(localStorage.getItem("cart"));
+    const totalQuantity = cartStr.reduce((sum, item) => sum + item.quantity, 0);
+    miniCart.innerHTML = totalQuantity;
+    console.log(totalQuantity)
+  } 
+}
+
+showMiniCart();
+
 // Cart
 const cart = localStorage.getItem("cart");
 if(!cart) {
@@ -63,6 +76,7 @@ if(formAddToCard) {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       alertAddCartSuccess();
+      showMiniCart();
     }
   });
 }
