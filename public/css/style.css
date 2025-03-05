@@ -79,8 +79,17 @@ body {
 
 .tour-detail .inner-images img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.mySwiper .swiper-slide {
+    width: 100px; 
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
 }
 
 .tour-detail .inner-title{

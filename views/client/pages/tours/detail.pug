@@ -7,11 +7,24 @@ block main
         .container.my-3 
             .row 
                 .col-6
-                    .inner-images 
-                        if(tour.images)
-                            each item in tour.images 
-                                .inner-image 
-                                    img(src=item)
+                    if(tour.images)
+                        .inner-images 
+                            div(class="swiper imagesMain")
+                                div(class="swiper-wrapper")
+                                    each item in tour.images 
+                                        div(class="swiper-slide")   
+                                            .inner-image 
+                                                img(src=item)
+
+                                div(class="swiper-button-next")
+                                div(class="swiper-button-prev")
+                            
+                            div(class="swiper imagesThumb")
+                                div(class="swiper-wrapper")
+                                    each item in tour.images 
+                                        div(class="swiper-slide")    
+                                            .inner-image 
+                                                img(src=item)
 
                 .col-6 
                     .inner-title #{tour.title} 
