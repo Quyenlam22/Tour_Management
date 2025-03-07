@@ -20,14 +20,15 @@ var swiperMain = new Swiper(".imagesMain", {
 const alertAddCartSuccess = () => {
   const showAlert = document.querySelector("[show-alert]")
   if (showAlert) {
-    showAlert.classList.remove("alert-hidden")
+    showAlert.classList.remove("alert-hidden");
+    showAlert.classList.remove("d-none");
     const time = parseInt(showAlert.getAttribute("data-time"));
     const closeAlert = document.querySelector("[close-alert]");
     closeAlert.addEventListener("click", () => {
-        showAlert.classList.add("alert-hidden");
+      showAlert.classList.add("alert-hidden");
     });
     setTimeout(() => {
-        showAlert.classList.add("alert-hidden");
+      showAlert.classList.add("alert-hidden");
     }, time);
   }
 }
@@ -35,44 +36,44 @@ const alertAddCartSuccess = () => {
 // Mini Cart 
 const showMiniCart = () => {
   const miniCart = document.querySelector("[mini-cart]");
-  if(miniCart) {
+  if (miniCart) {
     const cartStr = JSON.parse(localStorage.getItem("cart"));
-    const totalQuantity = cartStr.reduce((sum, item) => sum + item.quantity, 0);
-    miniCart.innerHTML = totalQuantity;
-    console.log(totalQuantity)
-  } 
+    if (cartStr) {
+      const totalQuantity = cartStr.reduce((sum, item) => sum + item.quantity, 0);
+      miniCart.innerHTML = totalQuantity;
+    }
+  }
 }
 
 showMiniCart();
 
 // Cart
 const cart = localStorage.getItem("cart");
-if(!cart) {
+if (!cart) {
   localStorage.setItem("cart", JSON.stringify([]));
 }
 const formAddToCard = document.querySelector("[form-add-to-card]");
-if(formAddToCard) {
+if (formAddToCard) {
   formAddToCard.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const quantity = parseInt(event.target.elements.quantity.value);
     const tourId = parseInt(formAddToCard.getAttribute("tour-id"));
-    
-    if(quantity > 0 && tourId) {
+
+    if (quantity > 0 && tourId) {
       const cart = JSON.parse(localStorage.getItem("cart"));
-      
+
       const indexExist = cart.findIndex(item => item.tourId == tourId);
 
-      if(indexExist == -1) {
+      if (indexExist == -1) {
         cart.push({
           tourId: tourId,
           quantity: quantity
         });
-      }
-      else{
+      } else {
         cart[indexExist].quantity = cart[indexExist].quantity + quantity;
       }
-      
+
       localStorage.setItem("cart", JSON.stringify(cart));
 
       alertAddCartSuccess();
